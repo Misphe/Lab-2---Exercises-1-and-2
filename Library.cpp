@@ -164,7 +164,7 @@ std::size_t Library::GetSize() const {
 
 Library::~Library() {
 	Node* current = head;
-	while (current != nullptr) {
+	while (head != nullptr) {
 		current = head->next;
 		delete head;
 		head = current;

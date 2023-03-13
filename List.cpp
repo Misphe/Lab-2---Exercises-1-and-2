@@ -65,12 +65,22 @@ void List::remove(Book book) {
 
 Book List::pop_back() {
 	Node* current = head;
-	while (current->next != nullptr) {
+	if (head == nullptr) {
+		Book book("error", "error");
+		return book;
+	}
+	if (head->next == nullptr) {
+		Book book = head->book;
+		delete head;
+		head = nullptr;
+		return book;
+	}
+	while (current->next->next != nullptr) {
 		current = current->next;
 	}
-	Book book = current->book;
-	delete current;
-	current = nullptr;
+	Book book = current->next->book;
+	delete current->next;
+	current->next = nullptr;
 	return book;
 
 }

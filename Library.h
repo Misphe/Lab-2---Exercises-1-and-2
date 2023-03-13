@@ -21,15 +21,5 @@ public:
 
 	std::size_t GetSize() const;
 	~Library();
-
-	/*Book& operator[](std::size_t index);
-	const Book& operator[](std::size_t index) const;
-
-	std::size_t GetSize() const;
-	~Library();
-
-	void push_back(const Book&);
-	void push_back(Book&&);
-	Book pop_back();*/
 };
 
