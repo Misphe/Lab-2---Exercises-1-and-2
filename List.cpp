@@ -46,9 +46,15 @@ void List::remove(Book book) {
 		return;
 	}
 	if (head->book == book) {
-		Node* tmp = head;
-		head = head->next;
-		delete tmp;
+		if (head->next != nullptr) {
+			Node* tmp = head;
+			head = head->next;
+			delete tmp;
+		}
+		else {
+			delete head;
+			head = nullptr;
+		}
 		return;
 	}
 	Node* current = head;
@@ -56,9 +62,15 @@ void List::remove(Book book) {
 		current = current->next;	
 	}
 	if (current->next != nullptr) {
-		Node* tmp = current->next;
-		current->next = current->next->next;
-		delete tmp;
+		if (current->next->next != nullptr) {
+			Node* tmp = current->next;
+			current->next = current->next->next;
+			delete tmp;
+		}
+		else {
+			delete current->next;
+			current->next = nullptr;
+		}
 		return;
 	}
 }

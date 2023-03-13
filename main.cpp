@@ -1,11 +1,10 @@
-#include "Book.h"
 #include "Library.h"
 using namespace std;
 
 #define ZAD1 false
 #define ListTest false
-#define ZAD2test false
-#define LIBRARY true
+#define ZAD2test true
+#define LIBRARY false
 
 int main() {
 
@@ -74,9 +73,9 @@ int main() {
 		cout << "l2: " << l2 << endl;
 		e = std::move(l2);
 		cout << "e: " << e << " l2: " << l2 << endl;
+		cout << "/////////////////////////////////" << endl << endl;
 		l1[0] = std::move(e[1]);
 		cout << "l1: " << l1 << endl;
-		e.pop_back();
 		cout << " e: " << e << endl;
 	}
 

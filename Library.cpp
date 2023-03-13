@@ -7,7 +7,9 @@ std::ostream& operator<<(std::ostream& output, const Library& library) {
 	}
 	Node* current = head;
 	while (current != nullptr) {
-		output << current->book;
+		if (current->book != Book("", "")) {
+			output << current->book;
+		}
 		current = current->next;
 	}
 	return output;
@@ -78,14 +80,15 @@ Library& Library::operator=(const Library& right) {
 	head = nullptr;
 	current = head;
 	while (other != nullptr) {
-		Node* tmp = new Node(other->book);
+		/*Node* tmp = new Node(other->book);
 		if (current == nullptr) {
 			head = tmp;
 		}
 		else {
 			current->next = tmp;
 		}
-		current = tmp;
+		current = tmp;*/
+		push_back(other->book);
 		other = other->next;
 
 	}
@@ -124,13 +127,15 @@ Book& Library::operator[](std::size_t index) {
 	int i = 0;
 	Node* current = head;
 	while (i != index) {
-		if (current != nullptr && current->next != nullptr) {
+		/*if (current != nullptr && current->next != nullptr) {
 			current = current->next;
 		}
 		else {
 			Book book("", "");
 			return book;
 		}
+		i++;*/
+		current = current->next;
 		i++;
 	}
 	return current->book;
@@ -140,13 +145,15 @@ const Book& Library::operator[](std::size_t index) const {
 	int i = 0;
 	Node* current = head;
 	while (i != index) {
-		if (current != nullptr && current->next != nullptr) {
+		/*if (current != nullptr && current->next != nullptr) {
 			current = current->next;
 		}
 		else {
 			Book book("", "");
 			return book;
 		}
+		i++;*/
+		current = current->next;
 		i++;
 	}
 	return current->book;
